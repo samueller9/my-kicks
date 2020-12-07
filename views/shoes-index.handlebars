@@ -1,6 +1,18 @@
-<h1>Shoes</h1>
+<div class="row mt-4 text-center">
+  <div class="col-lg-6 offset-lg-3 text-white">
+<h1>Our Shoes</h1>
 {{#each shoes}}
-  <h2>{{this.title}}</h2>
-  <img class="img-fluid" src="{{this.imgUrl}}" alt="Card image cap">
-  <p>{{this.description}}</p>
-{{/each}}
+    <div class="card mt-3">
+      <img class="card-img-top" src="{{this.imgUrl}}" alt="Card image cap">
+      <div class="card-body bg-primary text-white">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.desc}}</p>
+        <div class="text-right">
+          <a href="#" class="btn btn-warning">More Info</a>
+          <a href="/comments/new" class="btn btn-danger">Add Comment</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</div>
