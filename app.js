@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const bodyParser = require('body-parser');
+const models = require('./db/models');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // Use "main" as our default layout
@@ -31,12 +32,30 @@ app.get('/', (req, res) => {
 
 // INDEX
 app.get('/shoes', (req, res) => {
-  res.render('shoes-index', { shoes: shoes });
+  models.Shoes.findAll({ order: [['createdAt', 'DESC']] }).then(shoes => {
+    res.render('shoes', { shoes: shoes });
+  })
 })
 
-// NEW COMMENT
-app.get('/comments/new', (req, res) => {
-  res.render('comments-new', {});
+// CREATE Comment
+app.post('/shoes', (req, res) => {
+  models.Shoes.create(req.body).then(shoes => {
+    res.redirect(`/shoes`);
+  }).catch((err) => {
+    console.log(err)
+  });
+})
+
+// SHOW
+app.get('/shoes/:id', (req, res) => {
+  // Search for the event by its id that was passed in via req.params
+  models.Shoes.findByPk(req.params.id).then((shoes) => {
+    // If the id is for a valid event, show it
+    res.render('shoes-show', { shoes: shoes })
+  }).catch((err) => {
+    // if they id was for an event not in our db, log an error
+    console.log(err.message);
+  })
 })
 
 // Choose a port to listen on
