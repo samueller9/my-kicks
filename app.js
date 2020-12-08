@@ -24,11 +24,6 @@ app.get('/', (req, res) => {
   res.render('home',);
 })
 
-// var events = [
-//   { title: "I am your first event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" },
-//   { title: "I am your second event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" },
-//   { title: "I am your third event", desc: "A great event that is super fun to look at and good", imgUrl: "https://img.purch.com/w/660/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzA4OC85MTEvb3JpZ2luYWwvZ29sZGVuLXJldHJpZXZlci1wdXBweS5qcGVn" }
-// ]
 
 // INDEX
 app.get('/shoes', (req, res) => {
@@ -37,10 +32,10 @@ app.get('/shoes', (req, res) => {
   })
 })
 
-// CREATE Comment
+// CREATE
 app.post('/shoes', (req, res) => {
   models.Shoes.create(req.body).then(shoes => {
-    res.redirect(`/shoes`);
+    res.redirect(`/shoes/${shoes.id}`);
   }).catch((err) => {
     console.log(err)
   });
@@ -56,6 +51,11 @@ app.get('/shoes/:id', (req, res) => {
     // if they id was for an event not in our db, log an error
     console.log(err.message);
   })
+})
+
+//NEW Shoe
+app.get('/shoes-new', (req, res) => {
+  res.render('shoes-new', {});
 })
 
 // Choose a port to listen on

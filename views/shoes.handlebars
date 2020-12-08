@@ -1,12 +1,13 @@
 <div class="row mt-4 text-center">
   <div class="col-lg-6 offset-lg-3 text-white">
 <h1>Our Shoes</h1>
+<a href="/shoes-new">New Shoe</a>
 {{#each shoes}}
     <div class="card mt-3">
       <img class="card-img-top" src="{{this.imgUrl}}" alt="Card image cap">
       <div class="card-body bg-primary text-white">
-        <h5 class="card-title">{{this.title}}</h5>
-        <p class="card-text">{{this.desc}}</p>
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.price}}</p>
         <div class="text-right">
           <a href="/shoes/{{this.id}}" class="btn btn-warning">View</a>
           <a href="/comments/new" class="btn btn-danger">Comment</a>
