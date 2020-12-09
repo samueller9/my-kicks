@@ -73,7 +73,7 @@ app.get('/activities/:id', (req, res) => {
   // Search for the event by its id that was passed in via req.params
   models.Activities.findByPk(req.params.id).then((activities) => {
     // If the id is for a valid event, show it
-    res.render('activities-show', { shoes: shoes })
+    res.render('activities-show', {activities: activities })
   }).catch((err) => {
     // if they id was for an event not in our db, log an error
     console.log(err.message);
