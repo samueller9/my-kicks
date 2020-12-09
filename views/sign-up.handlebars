@@ -1,0 +1,30 @@
+<div class="container text-white text-center">
+  <div class="row">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form action="/sign-up" method="post">
+                 <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input name="firstName" type="text" class="form-control" placeholder="John" value="{{sign-up.firstName}}">
+                 </div>
+                 <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input name="lastName" type="text" class="form-control" placeholder="Doe" value="{{sign-up.lastName}}">
+                 </div>
+                  <div class="form-group">
+                     <label for="email">Email</label>
+                     <input name="email" type="text" class="form-control" placeholder="johndoe@gmail.com" value="{{sign-up.email}}">
+                  </div>
+                  <div class="form-group">
+                     <label for="password">Password</label>
+                     <input name="password" type="password" class="form-control" placeholder="" value="{{sign-up.password}}">
+                  </div>
+                  <a href="/" class="btn btn-danger">Back</a>
+                  <a class="btn btn-link text-white" href="/login">Login</a>
+                  <button type="submit" class="btn btn-primary">Register</button>
+               </form>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
