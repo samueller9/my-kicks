@@ -1,0 +1,17 @@
+<div class="row mt-4 text-center">
+  <div class="col-lg-6 offset-lg-3 text-white">
+<h1>Activities</h1>
+<!-- <a href="/activities-new">New Activity</a> -->
+{{#each activities}}
+    <div class="card mt-3">
+      <img class="card-img-top" src="{{this.imgUrl}}" alt="Card image cap">
+      <div class="card-body bg-primary text-white">
+        <h5 class="card-title">{{this.activity}}</h5>
+        <p class="card-text">{{this.desc}}</p>
+        <div class="text-right">
+          <!-- <a href="/activities/{{this.id}}" class="btn btn-warning">View</a> -->
+          <a href="/shoes" class="btn btn-danger">Look at Shoes</a>
+        </div>
+      </div>
+    </div>
+{{/each}}

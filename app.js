@@ -32,10 +32,25 @@ app.get('/shoes', (req, res) => {
   })
 })
 
-// CREATE
+app.get('/activities', (req, res) => {
+  models.Activities.findAll({ order: [['createdAt', 'DESC']] }).then(activities => {
+    res.render('activities', { activities: activities });
+  })
+})
+
+// CREATE Shoe
 app.post('/shoes', (req, res) => {
   models.Shoes.create(req.body).then(shoes => {
     res.redirect(`/shoes/${shoes.id}`);
+  }).catch((err) => {
+    console.log(err)
+  });
+})
+
+//Create Activity
+app.post('/activities', (req, res) => {
+  models.Activities.create(req.body).then(activities => {
+    res.redirect(`/activities/${activities.id}`);
   }).catch((err) => {
     console.log(err)
   });
@@ -53,9 +68,27 @@ app.get('/shoes/:id', (req, res) => {
   })
 })
 
+// SHOW
+app.get('/activities/:id', (req, res) => {
+  // Search for the event by its id that was passed in via req.params
+  models.Activities.findByPk(req.params.id).then((activities) => {
+    // If the id is for a valid event, show it
+    res.render('activities-show', { shoes: shoes })
+  }).catch((err) => {
+    // if they id was for an event not in our db, log an error
+    console.log(err.message);
+  })
+})
+
+
 //NEW Shoe
 app.get('/shoes-new', (req, res) => {
   res.render('shoes-new', {});
+})
+
+//New Activity
+app.get('/activities-new', (req, res) => {
+  res.render('activities-new', {});
 })
 
 // Choose a port to listen on
